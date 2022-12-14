@@ -1,0 +1,110 @@
+.acc-floor-plan-map {
+  margin: 2.5em 0;
+
+  svg text {
+    font-family: inherit !important;
+    font-weight: 600 !important;
+    pointer-events: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.acc-floor-plan-image {
+  width: 100%;
+}
+
+.acc-floor-plan table {
+  tr:nth-child(even) {
+    background-color: $acc-color-gray-lightest;
+  }
+}
+// room-type: (hover-color, current-color)
+$acc-floor-plan-map-colors: (
+  "Ballroom": (#ffc955, #ffb618),
+  "Exhibit_Hall": (#acc767, #91b041)
+);
+
+.acc-floor-plan-map-clickable {
+  cursor: pointer;
+  transition: fill 200ms ease;
+
+  @each $type, $colors in $acc-floor-plan-map-colors {
+    &[id*="#{$type}"]:hover {
+      fill: nth($colors, 1) !important;
+    }
+
+    &.acc-floor-plan-map-current[id*="#{$type}"] {
+      fill: nth($colors, 2) !important;
+      &:hover {
+        fill: nth($colors, 2) !important;
+      }
+    }
+  }
+}
+
+.acc-floor-plan-map #levels > [id^="clickable"] {
+  transition: opacity 200ms ease;
+}
+
+.acc-floor-plan-map #levels:hover > [id^="clickable"] {
+  opacity: 0.35;
+
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+.tooltip-element.acc-floor-plan-map-tooltip .tooltip-content {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  padding: 7px 10px;
+}
+
+.acc-floor-plan-files {
+  margin-bottom: 2.5em;
+}
+
+.acc-floor-plan-setups,
+.acc-floor-plan-specifications {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.acc-floor-plan-setups li,
+.acc-floor-plan-specifications li {
+  width: 100%;
+
+  @media screen and (min-width: $medium-screen) {
+    width: 50%;
+  }
+}
+
+.acc-floor-plan-setups li {
+  background-size: 6rem;
+  background-repeat: no-repeat;
+  margin: 1em 0;
+  padding-top: 6rem;
+}
+
+.acc-floor-plan-setups li.acc-banquet {
+  background-image: image_url("icons/setup-banquet.png");
+}
+
+.acc-floor-plan-setups li.acc-theater {
+  background-image: image_url("icons/setup-theater.png");
+}
+
+.acc-floor-plan-setups li.acc-classroom {
+  background-image: image_url("icons/setup-classroom.png");
+}
+
+.acc-floor-plan-setups li.acc-booths {
+  background-image: image_url("icons/setup-booth.png");
+}

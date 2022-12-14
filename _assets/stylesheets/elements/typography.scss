@@ -1,0 +1,49 @@
+body {
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $acc-font-header;
+  letter-spacing: .07em;
+}
+
+h3 {
+  font-size: 3.2rem;
+  text-align: center;
+}
+
+p {
+  margin-top: 0.5em;
+}
+
+ul {
+  list-style-type: square;
+}
+
+a {
+  color: $acc-color-primary;
+  text-decoration: underline;
+  transition: color $transition-time;
+
+  &:hover {
+    color: $acc-color-primary-dark;
+  }
+}
+
+.acc-content-block:first-child > *:first-child {
+  @media screen and (min-width: $medium-screen) {
+    margin-top: 0;
+  }
+}
+
+.acc-content-block {
+  p {
+    max-width: $text-max-width;
+  }
+}
+
+.acc-content-block ul:not(.acc-floor-plan-setups):not(.acc-floor-plan-specifications),
+.acc-accordion-content ul {
+  margin-top: 0;
+  max-width: $text-max-width;
+}

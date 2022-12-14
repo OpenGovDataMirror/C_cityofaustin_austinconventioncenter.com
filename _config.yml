@@ -1,0 +1,142 @@
+# Build settings
+markdown: kramdown
+
+permalink: pretty
+
+press_contact:
+ name: Terri McBride
+ email: terri.mcbride@austintexas.gov
+ title: Public Information and Marketing Manager
+ phone: 5124044021
+
+plugins:
+  - jekyll-assets
+  - jekyll-redirect-from
+
+assets:
+  autoprefixer:
+    browsers:
+      - "last 2 versions"
+      - "iOS > 8"
+      - "IE > 9"
+  sources:
+    - node_modules
+
+exclude:
+  - circle.yml
+  - Gemfile
+  - Gemfile.lock
+  - lib
+  - node_modules
+  - package.json
+  - Procfile
+  - Rakefile
+  - README.md
+  - s3_website.yml
+  - vendor
+
+
+contentful_options: &contentful_options
+  cda_query:
+    include: 2
+    limit: 1000
+  all_entries: true
+  content_types:
+    accordionBlock: Mappers::ContentBlockMapper
+    acme: Mappers::ContentBlockMapper
+    contactBlock: Mappers::ContentBlockMapper
+    featureBlock: Mappers::ContentBlockMapper
+    floorPlanMap: Mappers::ContentBlockMapper
+    galleryBlock: Mappers::ContentBlockMapper
+    galleryImage: Mappers::GalleryImageMapper
+    learnMoreMenu: Mappers::ContentBlockMapper
+    mega: Mappers::ContentBlockMapper
+    megaFeature: Mappers::ContentBlockMapper
+    menu: Mappers::ContentBlockMapper
+    navigationSection: Mappers::ContentBlockMapper
+    numbersFeature: Mappers::ContentBlockMapper
+    pageBanner: Mappers::ContentBlockMapper
+    pdfMenu: Mappers::ContentBlockMapper
+    sideBySide: Mappers::ContentBlockMapper
+    textBlock: Mappers::ContentBlockMapper
+    youTubeEmbed: Mappers::ContentBlockMapper
+
+contentful:
+  spaces:
+    -
+      acc:
+        <<: *contentful_options
+    -
+      pec:
+        <<: *contentful_options
+    -
+      acc_staging:
+        <<: *contentful_options
+        client_options:
+          api_url: 'preview.contentful.com'
+    -
+      pec_staging:
+        <<: *contentful_options
+        client_options:
+          api_url: 'preview.contentful.com'
+
+defaults:
+  -
+    values:
+      layout: "page"
+  -
+    scope: # Pages representing a section
+      type: sections
+    values:
+      layout: "section"
+      permalink: "/:slug/"
+  -
+    scope: # Pages without a section
+      type: orphans
+    values:
+      layout: "page"
+      permalink: "/:slug/"
+  - scope:
+      type: events
+    values:
+      layout: events
+      permalink: "/events/:year/:month/"
+  -
+    scope:
+      type: press-releases
+    values:
+      layout: press_release
+      permalink: "/press-releases/:title/"
+  -
+    scope:
+      type: "contact"
+    values:
+      layout: contact
+  -
+    scope:
+      type: "meet-the-team"
+    values:
+      layout: meet_the_team
+  -
+    scope:
+      type: "plans"
+    values:
+      layout: floor_plan
+  -
+    scope:
+      type: "ballrooms"
+    values:
+      layout: floor_plan
+  -
+    scope:
+      type: "exhibit-halls"
+    values:
+      layout: floor_plan
+
+collections:
+  orphans:
+    output: true
+  sections:
+    output: true
+  templates:
+    output: false

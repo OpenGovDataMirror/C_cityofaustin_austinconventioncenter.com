@@ -1,0 +1,64 @@
+.acc-feature-block {
+  background-color: $acc-color-gray-lightest;
+  background-repeat: no-repeat;
+  background-position: center 2rem;
+  background-size: auto;
+  font-size: 2rem;
+  margin-top: $acc-vertical-margin;
+  padding: 8rem 3rem 2em 3rem;
+  text-align: center;
+}
+
+.acc-feature-Testimonial {
+  background-image: image_url('icons/testimonial.png');
+}
+
+.acc-feature-Wifi {
+  background-image: image_url('icons/wifi.png');
+}
+
+.acc-feature-block p {
+  max-width: $site-max-width;
+  margin: 0 auto;
+
+  &:first-child {
+    padding-bottom: 1em;
+  }
+}
+
+.acc-feature-block ul {
+  max-width: $site-max-width/2;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.acc-mega-feature .acc-side-by-side-container {
+  margin-top: $acc-vertical-margin;
+  text-align: center;
+  h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+  & > div {
+    background-repeat: no-repeat;
+    background-size: 0 0;
+    padding: 3em;
+
+    @media screen and (min-width: $large-screen) {
+      background-size: auto 100%;
+
+      .acc-flex-one-half:last-child .acc-side-by-side-component {
+        padding-top: 1em;
+      }
+    }
+
+    p {
+      margin-top: 2em;
+    }
+  }
+  .acc-full > div {
+    @media screen and (max-width: $large-screen) {
+      padding: 3em;
+    }
+  }
+}

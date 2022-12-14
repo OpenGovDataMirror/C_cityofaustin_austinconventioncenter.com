@@ -1,0 +1,30 @@
+# Reference: https://github.com/laurilehmijoki/s3_website
+
+s3_id: <%= ENV["AWS_ACCESS_KEY_ID"] %>
+s3_secret: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
+s3_bucket: <%= ENV["S3_BUCKET"] %>
+
+index_document: index.html
+error_document: 404.html
+
+cache_control:
+  "assets/*": public, max-age=31536000, s-maxage=86400
+  "*.html": public, must-revalidate, max-age=3600, s-maxage=300
+  "*.xml": public, must-revalidate, max-age=3600, s-maxage=300
+  "*.kml": public, must-revalidate, max-age=3600, s-maxage=300
+  "*": public, max-age=86400
+
+cloudfront_distribution_id: <%= ENV["CLOUDFRONT_#{ENV["SITE"].upcase}_DISTRIBUTION_ID"] %>
+
+cloudfront_distribution_config:
+  default_cache_behavior:
+    compress: true
+    min_ttl: 60
+    viewer_protocol_policy: redirect-to-https
+  aliases:
+    quantity: 1
+    items:
+      - <%= ENV["S3_BUCKET"] %>
+
+cloudfront_invalidate_root: true
+cloudfront_wildcard_invalidation: true

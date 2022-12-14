@@ -1,0 +1,48 @@
+.acc-artist {
+  margin-bottom: 30px;
+  padding: 0;
+}
+.acc-artist-photo {
+  img {
+    max-width: 95%;
+  }
+}
+.acc-artist-bio {
+}
+
+.acc-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.acc-gallery-photo {
+  flex: 1 1 50%;
+  margin: 0;
+  padding: 0;
+  @media screen and (min-width: $large-screen) {
+    flex: 1 1 33%;
+  }
+}
+
+.acc-gallery-photo a {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.acc-gallery-photo img {
+  display: block;
+  width: 100%;
+}
+
+.acc-gallery-caption {
+  font-size: 1.4rem;
+  padding: 0 0.5em;
+  p{
+    margin: 0 0 1em 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}

@@ -1,0 +1,81 @@
+.acc-header-content {
+  @include full-width();
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  height: 9rem;
+  @media screen and (min-width: $nav-width) {
+    height: $desktop-header-height;
+  }
+}
+
+.acc-megamenu-description {
+  font-size: 1.7rem;
+  padding: 1em 1em 0 3rem;
+
+  display: none;
+
+  p {
+    margin: 0;
+  }
+
+  @media screen and (min-width: $nav-width) {
+    display: block;
+  }
+}
+
+.acc-logo {
+  flex: 1 0 auto;
+
+  a {
+    display: inline-block;
+  }
+
+  img {
+    height: 5rem;
+    max-width: none;
+  }
+}
+
+.acc-disclaimer {
+  background-color: $acc-color-red;
+  padding: .25em;
+  color: white;
+  font-size: 1.2rem;
+
+  a {
+    @include link-color-states(white);
+    color: white;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.acc-alert-banner {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 3rem;
+  p {
+    margin: 0;
+  }
+  .acc-button {
+    border-color: white;
+    color: white;
+    font-size: .5em;
+    padding: .25em .5em;
+    margin-top: 0;
+  }
+  a, a:hover, a:active, a:visited, a:focus {
+    color: white;
+  }
+  h3 {
+    margin: 0;
+  }
+}

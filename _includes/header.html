@@ -1,0 +1,26 @@
+<a class="acc-skipnav" href="#main-content">Skip to main content</a>
+
+{%- assign alert_banner = site.contentful.textBlock | where_exp: "textBlock", "textBlock.name == 'Alert Banner'" | first -%}
+{%- if alert_banner -%}
+<div class="acc-alert-banner">
+  {{ alert_banner.text | markdownify }}
+</div>
+{%- endif -%}
+
+<header class="acc-header-content" role="banner">
+  <div class="acc-logo">
+    <a href="{{site.baseurl}}/" accesskey="1" title="Home" aria-label="Home">
+      <img src="{% asset_path "{{site.id}}-logo.jpg" %}" />
+    </a>
+  </div>
+  <button class="acc-button-unstyled acc-menu-button hamburger hamburger--squeeze" type="button" id="menu-button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+  <nav role="navigation" class="acc-nav" id="nav">
+    {% assign menu = site.contentful.menu | where: "name", "Header" | first %}
+    {% include components/navigation.html items=menu.items list_classes="acc-nav-list" item_classes="acc-nav-link" %}
+  </nav>
+</header>
+<div class="acc-overlay"></div>
